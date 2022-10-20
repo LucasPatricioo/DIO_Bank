@@ -26,6 +26,12 @@ namespace DIO_Bank.Classes
 
         public bool Sacar(decimal valorSaque)
         {
+            if (valorSaque < 0)
+            {
+                Console.WriteLine("Valor inserido inválido!");
+                return false;
+            }
+
             if (valorSaque > (this.Saldo + this.ChequeEspecial))
             {
                 Console.WriteLine("Saldo Insuficiente!");
@@ -39,6 +45,12 @@ namespace DIO_Bank.Classes
 
         public void Depositar(decimal valorDeposito)
         {
+            if (valorDeposito <= 0)
+            {
+                Console.WriteLine("Valor inserido para depósito é inválido!");
+                return;
+            }
+
             this.Saldo += valorDeposito;
 
             Console.WriteLine($"O saldo atual após o deposito na conta N° {this.NumeroConta} é de R${this.Saldo}");
